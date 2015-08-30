@@ -412,7 +412,7 @@
     return new Promise(function (resolve, reject) {
       var timeout = setTimeout(function () {
         reject();
-      }, 2000);
+      }, 10000);
       self._socket.on('init', function (config) {
         var canvas = self._screen.getCanvas();
         canvas.width = config.width;
@@ -444,7 +444,7 @@
     code = code.toString();
     var keys = keyMap[code];
     if (keys) {
-      return keys[shift ? 2 : 1];
+      return keys[shift ? 1 : 0];
     }
     return null;
   };

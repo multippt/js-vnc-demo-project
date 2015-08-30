@@ -1,6 +1,4 @@
-js-vnc-demo-project
+js-vnc
 ===================
 
-Demo project for the course Advanced JavaScript at FMI
-
-Node 0.10.32 required.
+Modified to support Windows
