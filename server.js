@@ -85,12 +85,19 @@ function addEventHandlers(r, socket) {
 
         var data = encodeFrame(rect);
         if (data) {
-            socket.emit('frame', {
+            /*socket.emit('frame', {
                 x: rect.x,
                 y: rect.y,
                 width: rect.width,
                 height: rect.height,
                 image: data.toString('base64')
+            });*/
+			socket.emit('frame', {
+                x: rect.x,
+                y: rect.y,
+                width: rect.width,
+                height: rect.height,
+                image: data
             });
         }
 

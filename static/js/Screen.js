@@ -5,13 +5,25 @@
     this._canvas = canvas;
     this._context = canvas.getContext('2d');
   }
+  
+	function blobToImage(imageData) {
+		if (Blob && 'undefined' != typeof URL) {
+			var blob = new Blob([imageData], {type: 'image/png'});
+			return URL.createObjectURL(blob);
+		} else if (imageData.base64) {
+			return 'data:image/png;base64,' + imageData.data;
+		} else {
+			return 'about:blank';
+		}
+	}
 
   Screen.prototype.drawRect = function (rect) {
     var img = new Image();
     var self = this;
     img.width = rect.width;
     img.height = rect.height;
-    img.src = 'data:image/png;base64,' + rect.image;
+    //img.src = 'data:image/png;base64,' + rect.image;
+	img.src = blobToImage(rect.image);
     img.onload = function () {
       self._context.drawImage(this, rect.x, rect.y, rect.width, rect.height);
     };
