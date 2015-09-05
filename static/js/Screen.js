@@ -31,18 +31,39 @@
 
   Screen.prototype.addMouseHandler = function (cb) {
     var state = 0;
+	var self = this;
+	this._canvas.addEventListener('contextmenu', function(e) {
+		e.preventDefault();
+	});
     this._canvas.addEventListener('mousedown', this._onmousedown = function (e) {
-      state = 1;
-      cb.call(null, e.pageX, e.pageY, state);
-      e.preventDefault();
+		state = 1;
+		if (e.button == 1) {
+			state = 2;
+		}
+		if (e.button == 2) {
+			state = 4;
+		}
+		var rect = self._canvas.getBoundingClientRect();
+		var x = e.pageX - rect.left;
+		var y = e.pageY - rect.top;
+
+		console.log(e);
+		cb.call(null, x, y, state);
+		e.preventDefault();
     }, false);
     this._canvas.addEventListener('mouseup', this._onmouseup = function (e) {
+		var rect = self._canvas.getBoundingClientRect();
+		var x = e.pageX - rect.left;
+		var y = e.pageY - rect.top;
       state = 0;
-      cb.call(null, e.pageX, e.pageY, state);
+      cb.call(null, x, y, state);
       e.preventDefault();
     }, false);
     this._canvas.addEventListener('mousemove', this._onmousemove = function (e) {
-      cb.call(null, e.pageX, e.pageY, state);
+		var rect = self._canvas.getBoundingClientRect();
+		var x = e.pageX - rect.left;
+		var y = e.pageY - rect.top;
+      cb.call(null, x, y, state);
       e.preventDefault();
     });
   };

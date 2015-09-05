@@ -29,7 +29,16 @@
 .form-wrapper .form-horizontal .control-label {
   width: auto;
 }
-
+html, body {
+	height: 100%;
+}
+#screen-wrapper {
+	text-align: center;
+	height: 100%;
+	background-color: #000;
+	margin: 0px;
+	padding: 0px;
+}
 #screen {
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
@@ -38,4 +47,13 @@
   -moz-transform-origin: 0 0;
   transform-origin: 0 0;
   cursor: none;
+  margin: auto;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+#disconnect-btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }

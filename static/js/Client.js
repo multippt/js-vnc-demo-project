@@ -434,10 +434,10 @@
     var s = Math.min(sw, sh);
     this._scaleFactor = s;
     var canvas = this._screen.getCanvas();
-    var transform = 'scale(' + s + ')';
+    /*var transform = 'scale(' + s + ')';
     canvas.style.mozTransform = transform;
     canvas.style.webkitTransform = transform;
-    canvas.style.transform = transform;
+    canvas.style.transform = transform;*/
   };
 
   Client.prototype._toRfbKeyCode = function (code, shift) {
