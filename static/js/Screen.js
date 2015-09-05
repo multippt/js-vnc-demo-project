@@ -44,8 +44,10 @@
 			state = 4;
 		}
 		var rect = self._canvas.getBoundingClientRect();
-		var x = e.pageX - rect.left;
-		var y = e.pageY - rect.top;
+		var scaleX = self._canvas.width / rect.width;
+		var scaleY = self._canvas.height / rect.height;
+		var x = (e.pageX - rect.left) * scaleX;
+		var y = (e.pageY - rect.top) * scaleY;
 
 		console.log(e);
 		cb.call(null, x, y, state);
@@ -53,16 +55,20 @@
     }, false);
     this._canvas.addEventListener('mouseup', this._onmouseup = function (e) {
 		var rect = self._canvas.getBoundingClientRect();
-		var x = e.pageX - rect.left;
-		var y = e.pageY - rect.top;
+		var scaleX = self._canvas.width / rect.width;
+		var scaleY = self._canvas.height / rect.height;
+		var x = (e.pageX - rect.left) * scaleX;
+		var y = (e.pageY - rect.top) * scaleY;
       state = 0;
       cb.call(null, x, y, state);
       e.preventDefault();
     }, false);
     this._canvas.addEventListener('mousemove', this._onmousemove = function (e) {
 		var rect = self._canvas.getBoundingClientRect();
-		var x = e.pageX - rect.left;
-		var y = e.pageY - rect.top;
+		var scaleX = self._canvas.width / rect.width;
+		var scaleY = self._canvas.height / rect.height;
+		var x = (e.pageX - rect.left) * scaleX;
+		var y = (e.pageY - rect.top) * scaleY;
       cb.call(null, x, y, state);
       e.preventDefault();
     });
